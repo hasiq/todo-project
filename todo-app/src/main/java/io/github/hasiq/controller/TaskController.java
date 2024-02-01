@@ -42,7 +42,9 @@ public class TaskController {
 
     @GetMapping("/tasks/{id}")
     ResponseEntity<?> readTask(@PathVariable int id){
-        return ResponseEntity.ok(repository.findById(id));
+       return repository.findById(id)
+               .map(ResponseEntity::ok)
+               .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/tasks/{id}")

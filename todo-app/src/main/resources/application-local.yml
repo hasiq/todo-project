@@ -1,0 +1,10 @@
+        spring:
+            h2:
+                console:
+                    enabled: true
+                    path: '/console'
+            datasource:
+                url: 'jdbc:h2:file:C:/todoApp/todo-project/todo-app/todo-db'
+            jpa:
+                hibernate:
+                    ddl-auto: create-drop
