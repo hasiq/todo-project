@@ -23,7 +23,7 @@ public class Project {
         return id;
     }
 
-    public void setId(int id) {
+     void setId(int id) {
         this.id = id;
     }
 
@@ -31,23 +31,23 @@ public class Project {
         return description;
     }
 
-    public void setDescription(String description) {
+     void setDescription(String description) {
         this.description = description;
     }
 
-    public Set<TaskGroup> getGroups() {
+     Set<TaskGroup> getGroups() {
         return groups;
     }
 
-    public void setGroups(Set<TaskGroup> groups) {
+     void setGroups(Set<TaskGroup> groups) {
         this.groups = groups;
     }
 
-    public Set<ProjectStep> getSteps() {
+     public Set<ProjectStep> getSteps() {
         return steps;
     }
 
-    public void setSteps(Set<ProjectStep> steps) {
+     void setSteps(Set<ProjectStep> steps) {
         this.steps = steps;
     }
 }
