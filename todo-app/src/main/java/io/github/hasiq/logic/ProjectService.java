@@ -42,7 +42,8 @@ public class ProjectService {
                             .map(step -> new Task(step.getDescription(), deadline.plusDays(step.getDaysToDeadLine())))
                             .collect(Collectors.toSet())
                     );
-                    return targetGroup;
+                    targetGroup.setProject(project);
+                    return taskGroupRepository.save(targetGroup);
                 }).orElseThrow(() -> new IllegalArgumentException("Project not found"));
         return new GroupReadModel(result);
     }
