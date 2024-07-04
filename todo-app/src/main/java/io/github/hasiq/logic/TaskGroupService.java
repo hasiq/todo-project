@@ -37,7 +37,7 @@ public class TaskGroupService {
            throw new IllegalArgumentException("Group has undone tasks, Done all the tasks first");
        }
        TaskGroup result = repository.findById(groupId)
-               .orElseThrow(() -> new IllegalArgumentException("TaskGroup not found"));
+               .orElseThrow(() -> new IllegalArgumentException("TaskGroup with given id does not exist"));
        result.setDone(!result.isDone());
        repository.save(result);
     }
