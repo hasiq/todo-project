@@ -1,7 +1,6 @@
 package io.github.hasiq.logic;
 
 import io.github.hasiq.TaskConfigurationPropertries;
-import io.github.hasiq.model.Project;
 import io.github.hasiq.model.ProjectRepository;
 import io.github.hasiq.model.TaskGroupRepository;
 import org.springframework.context.annotation.Bean;
