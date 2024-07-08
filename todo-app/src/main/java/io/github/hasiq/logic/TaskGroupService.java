@@ -5,7 +5,6 @@ import io.github.hasiq.model.TaskGroupRepository;
 import io.github.hasiq.model.TaskRepository;
 import io.github.hasiq.model.projection.GroupReadModel;
 import io.github.hasiq.model.projection.GroupWriteModel;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +20,7 @@ public class TaskGroupService {
     }
 
     public GroupReadModel createGroup(GroupWriteModel source){
-         TaskGroup result = repository.save(source.toGruop());
+         TaskGroup result = repository.save(source.toGroup());
          return new GroupReadModel(result);
     }
 

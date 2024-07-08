@@ -2,7 +2,6 @@ package io.github.hasiq.model.projection;
 
 import io.github.hasiq.model.TaskGroup;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,11 +25,11 @@ public class GroupWriteModel {
         this.tasks = tasks;
     }
 
-    public TaskGroup toGruop(){
+    public TaskGroup toGroup(){
         var result = new TaskGroup();
         result.setDescription(description);
         result.setTasks(tasks.stream()
-                .map(GroupTaskWriteModel::toTask)
+                .map(source -> source.toTask(result))
                 .collect(Collectors.toSet())
         );
         return result;
