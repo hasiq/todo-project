@@ -1,5 +1,6 @@
 package io.github.hasiq.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -21,6 +22,7 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "task_group_id")
+    @JsonIgnore
     private TaskGroup group;
 
       Task() {

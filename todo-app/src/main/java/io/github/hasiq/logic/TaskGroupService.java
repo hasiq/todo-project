@@ -1,11 +1,13 @@
 package io.github.hasiq.logic;
 
+import io.github.hasiq.model.Task;
 import io.github.hasiq.model.TaskGroup;
 import io.github.hasiq.model.TaskGroupRepository;
 import io.github.hasiq.model.TaskRepository;
 import io.github.hasiq.model.projection.GroupReadModel;
 import io.github.hasiq.model.projection.GroupWriteModel;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,11 +35,14 @@ public class TaskGroupService {
 
     public void toggleGroup(int groupId){
        if(taskRepository.existsByDoneIsFalseAndGroup_Id(groupId)){
-           throw new IllegalArgumentException("Group has undone tasks, Done all the tasks first");
+           throw new IllegalStateException("Group has undone tasks, Done all the tasks first");
        }
        TaskGroup result = repository.findById(groupId)
                .orElseThrow(() -> new IllegalArgumentException("TaskGroup with given id does not exist"));
        result.setDone(!result.isDone());
        repository.save(result);
     }
+
+
+
 }
