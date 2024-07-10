@@ -7,11 +7,12 @@ import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -30,11 +31,6 @@ public class TaskController {
         return ResponseEntity.created(URI.create("/" + save.getId())).body(save);
     }
 
-    @GetMapping(params = {"!sort", "!page", "!size"})
-    ResponseEntity<List<Task>> readAllTasks(){
-        logger.warn("Exposing all tasks!");
-        return ResponseEntity.ok(repository.findAll());
-    }
 
     @GetMapping
     ResponseEntity<List<Task>> readAllTasks(Pageable page){
@@ -77,5 +73,12 @@ public class TaskController {
         repository.findById(id)
                 .ifPresent(task -> task.setDone(!task.isDone()));
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/today")
+    ResponseEntity<List<Task>> readTodayTasks(){
+        LocalDateTime today = LocalDateTime.now();
+        List<Task> tasks = repository.findAllByDeadlineBeforeAndDoneIsFalseOrDeadlineIsNullAndDoneIsFalse(today);
+        return ResponseEntity.ok(tasks);
     }
 }
