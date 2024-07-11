@@ -22,7 +22,7 @@ public class ProjectStep {
         return id;
     }
 
-     void setId(int id) {
+    void setId(int id) {
         this.id = id;
     }
 
@@ -38,15 +38,15 @@ public class ProjectStep {
         return daysToDeadline;
     }
 
-     public void setDaysToDeadLine(int daysToDeadLine) {
+    public void setDaysToDeadLine(int daysToDeadLine) {
         this.daysToDeadline = daysToDeadLine;
     }
 
-     Project getProject() {
+    Project getProject() {
         return project;
     }
 
-     public void setProject(Project project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 }

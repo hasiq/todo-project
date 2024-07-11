@@ -19,19 +19,19 @@ public class ProjectWriteModel {
         return description;
     }
 
-   public void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-   public List<ProjectStep> getSteps() {
+    public List<ProjectStep> getSteps() {
         return steps;
     }
 
-   public void setSteps(List<ProjectStep> steps) {
+    public void setSteps(List<ProjectStep> steps) {
         this.steps = steps;
     }
 
-    public Project toProject(){
+    public Project toProject() {
         var result = new Project();
         result.setDescription(description);
         steps.forEach(step -> step.setProject(result));
