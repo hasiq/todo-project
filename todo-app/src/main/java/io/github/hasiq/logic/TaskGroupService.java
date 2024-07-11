@@ -1,9 +1,6 @@
 package io.github.hasiq.logic;
 
-import io.github.hasiq.model.Task;
-import io.github.hasiq.model.TaskGroup;
-import io.github.hasiq.model.TaskGroupRepository;
-import io.github.hasiq.model.TaskRepository;
+import io.github.hasiq.model.*;
 import io.github.hasiq.model.projection.GroupReadModel;
 import io.github.hasiq.model.projection.GroupWriteModel;
 
@@ -21,9 +18,13 @@ public class TaskGroupService {
         this.taskRepository = taskRepository;
     }
 
+    GroupReadModel createGroup(GroupWriteModel source, Project project) {
+        TaskGroup result = repository.save(source.toGroup(project));
+        return new GroupReadModel(result);
+    }
+
     public GroupReadModel createGroup(GroupWriteModel source){
-         TaskGroup result = repository.save(source.toGroup());
-         return new GroupReadModel(result);
+        return createGroup(source, null);
     }
 
     public List<GroupReadModel> readAll() {
